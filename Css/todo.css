@@ -1,0 +1,28 @@
+.navbar{
+    background-color: #2779ff
+    !important;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar a{
+    color: #000 !important;
+}
+main{
+    flex:1 0 auto
+}
+
+.button button{
+    min-width: 45%;
+    margin: 5px !important;
+
+}
+
+.spacing{
+    margin-left: 20px !important;
+}
+
