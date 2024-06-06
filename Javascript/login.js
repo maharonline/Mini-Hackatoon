@@ -34,14 +34,24 @@ const handlelogin = () => {
     }
 
     else if(isuserfound){
+        const logedinuser={
+            email:user.email
+
+        }
+        localStorage.setItem("user1",JSON.stringify(logedinuser))
         notify("Login Successfully","success")
+        setTimeout(()=>{
+
+            document.getElementById("headpage").innerHTML=window.location.href="todo.html"
+        }, 1000)
+        
+        
     }
-    document.getElementById("loginpage").style.display='none'
-    document.getElementById("logout").style.display='block'
-    document.getElementById("headpage").style.display='block'
-    document.getElementById("headpage").innerHTML='Welcome Back!'+user.email
+    // document.getElementById("loginpage").style.display='none'
+    // document.getElementById("logout").style.display='block'
+    // document.getElementById("headpage").style.display='block'
+    // document.getElementById("headpage").innerHTML='Welcome Back!'+user.email
     
-    // document.getElementById("headpage").innerHTML=window.location.href="todo.html"
 
     
     

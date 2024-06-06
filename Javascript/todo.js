@@ -1,3 +1,6 @@
+document.getElementById('userEmailWelcome').innerHTML = JSON.parse(localStorage.getItem("user1")).email
+
+
 getIputfield=(id)=> {
    return document.getElementById(id).value
 }
@@ -19,35 +22,14 @@ function handlecreate() {
 
     }
 
-    // for(let i=0;i<Users.length;i++){
-    //     if(Users[i]===user.firstname && user.lastname && user.email && user.dob){
-    //         isfound=true
-    //         shownotify("User Already in Array","error")
-    //         Users.push("")
-            
-
-    //     }
-    // }
-    // if(isfound===false){
-    //     shownotify("NAi hai","success")
-    //     Users.push(user)
-
-    // }
     if(Users.push(user)){
         shownotify("User Successfully Added","success")
     }
+   
     
     console.log(Users)
     // showtable()
 }
-
-
-//Print User
-
-printuser=()=>{
-    console.log(Users)
-}
-
 
 function handleread(){
     showtable()
@@ -56,10 +38,14 @@ function handleread(){
 function handleupdate(){
    
         let complete="true"
-        let user=Users.map((check,i)=>{
-            if(check.id===2){
+        const user=Users.map((check,i)=>{
+            if(check.title==="hamza"){
                 return{...check,title:complete}
-    
+                
+            }
+            else if(check.title!=="hamza"){
+                return shownotify("No Available","error")
+
             }
             else{
                 return check
@@ -70,9 +56,16 @@ function handleupdate(){
         console.log(Users);  
     }
 
+    const handledelete=()=>{
+        let userdelete=Users.filter(check=>check.title!=="hamza")
+        console.log(userdelete)
+        Users=userdelete
+        shownotify("User Successfully Deleted","success")
+    }
+
 
 function showtable(){
-    let tableStartingCode='<div class="table-responsive"><table class="table">'
+    let tableStartingCode='<div class="table-responsive "><table class="table" >'
     let tablehead='<thead><tr><th scope="col">#</th><th scope="col">Description</th><th scope="col">Title</th><th scope="col">Date</th> </tr></thead>'
 
   let tableendingcode='</table></div>'
@@ -82,6 +75,8 @@ function showtable(){
       tablebody+= '<tbody><tr><th scope="row">'+(i+1)+'</th><td>'+Users[i].description+'</td><td>'+Users[i].title+'</td><td>'+Users[i].date+'</td><td></td></tr></tbody>'
 }
 let table=tableStartingCode +tablehead+tablebody+tableendingcode
+// document.getElementById("output").style.backgroundColor='linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)'
+
 document.getElementById("output").innerHTML=table
 }
 
