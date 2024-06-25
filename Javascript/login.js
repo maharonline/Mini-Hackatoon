@@ -27,7 +27,8 @@ const handlelogin = () => {
 
     let userstorage=JSON.parse(localStorage.getItem('user'))
 
-    let isuserfound = userstorage.find(check => check.email === user.email && check.password === user.password)
+    let isuserfound = userstorage.find(check => {
+        return check.email === user.email && check.password === user.password})
     if (!isuserfound) {
         notify("Please Signup First!","error")
         return
